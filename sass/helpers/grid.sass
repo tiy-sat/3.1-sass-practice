@@ -1,0 +1,26 @@
+// GRIDS!
+
+.grid__row
+  // Eliminate whitespace between inline-block elements
+  font-size: 0
+
+[class^=grid__col]
+  @include padding-horizontal($grid__gutter--width)
+  display: inline-block
+  // Reset font size for content to actually read words
+  font-size: $font-size--base
+
+.grid__col--quarter
+  width: 25%
+
+$number-of-columns: 12
+
+@for $i from 1 through $number-of-columns
+  .grid__col--#{$i}
+    width: (100% / $number-of-columns) * $i
+
+
+@media (max-width: 375px)
+  @for $i from 1 through 4
+    .grid__col--#{$i}-small
+      width: (100% / 4) * $i
